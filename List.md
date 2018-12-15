@@ -21,7 +21,7 @@ From there I can create a route for Users
 When users route is created I will need to create a queries folder to put my userqueries into. This js file will contain the logic that will grab the information from the database and show up on the app.js route path (http://localhost:5000/users).
  -->
 
-4. Create app.js in the practice_unit_3 folder. This is where all the routes and database come together.
+<!-- 4. Create app.js in the practice_unit_3 folder. This is where all the routes and database come together.
 
 
                                         NOTES
@@ -50,4 +50,5 @@ app.listen(5000, () => {
 
 5. Create a routes folder for the user route. and a queries.js for it as well.
 users.js -route
-usersQueries.js -queries
+usersQueries.js -queries -->
+6. Create route and queries for posts

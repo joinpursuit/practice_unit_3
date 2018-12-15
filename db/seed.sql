@@ -19,7 +19,7 @@ CREATE TABLE users (
 CREATE TABLE posts (
 
 id SERIAL PRIMARY KEY,
-poster_id INT REFERENCES users(id),
+poster_id INT REFERENCES users(id) ON DELETE CASCADE,
 body TEXT NOT NULL
 );
 
@@ -31,8 +31,8 @@ CREATE TABLE likes (
 
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
-  commenter_id INT REFERENCES users(id),
-  post_id INT REFERENCES posts(id),
+  commenter_id INT REFERENCES users(id) ON DELETE CASCADE,
+  post_id INT REFERENCES posts(id) ON DELETE CASCADE,
   body TEXT NOT NULL
 );
 

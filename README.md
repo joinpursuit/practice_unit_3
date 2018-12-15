@@ -1,22 +1,22 @@
-# Practice Exam - Full RESTful API
+<!-- # Practice Exam - Full RESTful API
 
-Create a full RESTful API using the Facebook database structure you created in the previous assignment, including an Express app and a Postgres database. This app should have the following routes, with corresponding SQL statements:
+Create a full RESTful API using the Facebook database structure you created in the previous assignment, including an Express app and a Postgres database. This app should have the following routes, with corresponding SQL statements: -->
 
-- **Users**
+<!-- - **Users**
 id
 name
-age
+age -->
   <!-- - GET `/users` - Get all users. -->
   <!-- - GET `/users/:id` - Get single user. -->
   <!-- - POST `/users` - Add single user. -->
   <!-- - DELETE `/users/:id` - Delete user with the corresponding `id`. -->
 - **Posts**
-id
+<!-- id
 poster_id
-body
+body -->
 
-  - GET `/posts` - Get all posts.
-  - GET `/posts/:id` - Get single post.
+  <!-- - GET `/posts` - Get all posts. -->
+  <!-- - GET `/posts/:id` - Get single post. -->
   - POST `/posts` - Add single post.
   - PATCH `/posts/:id` - Edit single post.
   - DELETE `/posts/:id` - Delete single post.
