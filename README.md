@@ -6,10 +6,10 @@ Create a full RESTful API using the Facebook database structure you created in t
 id
 name
 age
-  - GET `/users` - Get all users.
-  - GET `/users/:id` - Get single user.
-  - POST `/users` - Add single user.
-  - DELETE `/users/:id` - Delete user with the corresponding `id`.
+  <!-- - GET `/users` - Get all users. -->
+  <!-- - GET `/users/:id` - Get single user. -->
+  <!-- - POST `/users` - Add single user. -->
+  <!-- - DELETE `/users/:id` - Delete user with the corresponding `id`. -->
 - **Posts**
 id
 poster_id

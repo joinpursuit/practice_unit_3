@@ -48,4 +48,6 @@ app.listen(5000, () => {
 -Run in the terminal nodemon app.js
 -Go to http://localhost:5000 to test it. (right now all good )
 
-5. Create a routes folder for the user route.
+5. Create a routes folder for the user route. and a queries.js for it as well.
+users.js -route
+usersQueries.js -queries
