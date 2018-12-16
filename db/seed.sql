@@ -44,6 +44,7 @@ CREATE TABLE albums (
 CREATE TABLE pictures (
   id SERIAL PRIMARY KEY,
   picture_user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  picture_album_id INT REFERENCES albums(id) ON DELETE SET NULL,
   picture_url VARCHAR NOT NULL
 );
 
