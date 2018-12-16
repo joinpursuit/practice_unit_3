@@ -16,7 +16,7 @@ const getAllLikes = (req, res, next) => {
 
 const getSinglePostLikes = (req, res, next) => {
   let postId = req.params.id;
-  db.one('SELECT * FROM likes WHERE id=$1', postId)
+  db.one('SELECT * FROM likes WHERE like_post_id=$1', postId)
     .then((data) => {
       res.status(200)
         .json({

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const users = require('./routes/users');
 const posts = require('./routes/posts');
 const likes = require('./routes/likes');
+const comments = require('./routes/comments');
 
 const listenMsg = () => (
   console.log(`listening on port${port}`));
@@ -39,6 +40,7 @@ app.use(bodyParser.json());
 app.use('/users', users);
 app.use('/posts', posts);
 app.use('/likes', likes);
+app.use('/comments', comments);
 
 app.get('/', endRoute);
 

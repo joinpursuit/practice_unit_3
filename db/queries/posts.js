@@ -28,7 +28,7 @@ const getSinglePost = (req, res, next) => {
 };
 
 const createPost = (req, res, next) => {
-  db.none('INSERT INTO posts (post_user_id, post_body) VALUES (${userId}, ${body})', req.body)
+  db.none('INSERT INTO posts (post_user_id, post_body) VALUES (${userId},${post})', req.body)
     .then(() => {
       res.status(200)
         .json({
@@ -41,8 +41,8 @@ const createPost = (req, res, next) => {
 };
 
 const editPost = (req, res, next) => {
-  db.none('UPDATE posts SET post_body=${postBody} WHERE id=${postId}', {
-    postBody: req.body.body,
+  db.none('UPDATE posts SET post_body=${post} WHERE id=${postId}', {
+    post: req.body.post,
     postId: req.params.id,
   }).then(() => (
     res.status(200)
