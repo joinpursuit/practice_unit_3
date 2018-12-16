@@ -3,6 +3,8 @@ const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
 const users = require('./routes/users');
+const posts = require('./routes/posts');
+const likes = require('./routes/likes');
 
 const listenMsg = () => (
   console.log(`listening on port${port}`));
@@ -35,6 +37,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use('/users', users);
+app.use('/posts', posts);
+app.use('/likes', likes);
 
 app.get('/', endRoute);
 
