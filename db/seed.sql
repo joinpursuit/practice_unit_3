@@ -6,7 +6,7 @@ CREATE DATABASE practice_unit_3;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   name VARCHAR NOT NULL,
-  age INT
+  age INT NOT NULL
 );
 
 CREATE TABLE posts (
