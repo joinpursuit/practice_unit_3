@@ -21,14 +21,14 @@ body -->
   <!-- - PATCH `/posts/:id` - Edit single post. -->
   <!-- - DELETE `/posts/:id` - Delete single post. -->
 - **Likes**
-id
+<!-- id
 liker_id
-post_id
+post_id -->
 
-  - GET `/likes` - Get all likes.
-  - GET `/likes/posts/:id` - Get all likes for a single post.
-  - POST `/likes` - Add single like.
-  - DELETE `/likes/:id` - Delete single like.
+  <!-- - GET `/likes` - Get all likes. -->
+  <!-- - GET `/likes/posts/:id` - Get all likes for a single post. -->
+  <!-- - POST `/likes` - Add single like. -->
+  <!-- - DELETE `/likes/:id` - Delete single like. -->
 - **Comments**
 id
 commenter_id
