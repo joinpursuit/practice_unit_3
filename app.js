@@ -3,6 +3,9 @@ const app = express();
 const bodyParser = require('body-Parser');
 const users = require('./routes/users.js');
 const posts = require('./routes/posts.js');
+const likes = require('./routes/likes.js');
+const comments = require('./routes/comments.js');
+const albums = require('./routes/albums.js')
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -11,6 +14,12 @@ app.use(bodyParser.json());
 app.use('/users', users);
 
 app.use('/posts', posts);
+
+app.use('/likes', likes);
+
+app.use('/comments', comments)
+
+app.use('/albums', albums)
 
 app.get('/', (req, res) => {
   res.send('this is the home page for facebook')

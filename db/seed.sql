@@ -11,7 +11,7 @@ CREATE TABLE users (
 
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
-  poster_id INT REFERENCES users(id),
+  poster_id INT REFERENCES users(id) ON DELETE CASCADE,
   body VARCHAR NOT NULL
 );
 
@@ -39,6 +39,8 @@ CREATE Table Pictures (
   url VARCHAR NOT NULL
 );
 
-INSERT INTO users (name, age) VALUES ('Jonelle Bain', 100), ('Max Mezalon', 102);
+INSERT INTO users (name, age) VALUES ('Jonelle Bain', 38), ('Max Mezalon', 27);
 
-INSERT INTO posts (id, body) VALUES (2, 'this is my first posts'), (4, 'this is pretty cool');
+INSERT INTO posts (poster_id, body) VALUES (1, 'this is my first posts'), (1, 'this is pretty cool'), (2, 'checking this post for user 2');
+
+INSERT INTO likes (liker_id, post_id) VALUES (2,2), (1,2), (1,3), (2,1), (2,2)
