@@ -1,0 +1,33 @@
+{
+  "name": "jackyo_practice3",
+  "version": "1.0.0",
+  "description": "facebook restful API ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JJGITTY2018/practice_unit_3.git"
+  },
+  "keywords": [
+    "restful",
+    "pratice",
+    "api",
+    "3"
+  ],
+  "author": "Jacky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JJGITTY2018/practice_unit_3/issues"
+  },
+  "homepage": "https://github.com/JJGITTY2018/practice_unit_3#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9",
+    "pg-promise": "^8.5.4",
+    "save": "^2.3.3"
+  }
+}
