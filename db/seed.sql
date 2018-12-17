@@ -13,25 +13,25 @@ DROP TABLE IF EXISTS pictures;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   name VARCHAR NOT NULL,
-  age SERIAL NOT NULL
+  age INT NOT NULL
 );
 
 CREATE TABLE posts (
 
-id SERIAL PRIMARY KEY,
+id SERIAL PRIMARY KEY ,
 poster_id INT REFERENCES users(id) ON DELETE CASCADE,
 body TEXT NOT NULL
 );
 
 CREATE TABLE likes (
   id SERIAL PRIMARY KEY,
-  liker_id INT REFERENCES users(id),
-  poster_id INT REFERENCES posts(id)
+  liker_id INT REFERENCES users(id) ON DELETE CASCADE,
+  poster_id INT REFERENCES posts(id) ON DELETE CASCADE
 );
 
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
-  commenter_id INT REFERENCES users(id) ON DELETE CASCADE,
+  commenter_id INT REFERENCES users(id),
   post_id INT REFERENCES posts(id) ON DELETE CASCADE,
   body TEXT NOT NULL
 );

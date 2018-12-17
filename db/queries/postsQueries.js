@@ -27,7 +27,7 @@ const getSinglePost = (req, res, next) => {
 }
 
 const createPost = (req, res, next) => {
-  db.none('INSERT INTO users(id,poster_id, body) VALUES(${id},${poster_id}, ${body})', req.body)
+  db.none('INSERT INTO posts(poster_id, body) VALUES(${poster_id}, ${body})', req.body)
     .then(data => {
       res.status(200)
         .json({
@@ -37,26 +37,25 @@ const createPost = (req, res, next) => {
     })
     .catch(err => next(err))
 }
+const updatePost = (req, res, next) => {
+  db.none('UPDATE posts SET body=${body} WHERE id=${id}',{
+    id: parseInt(req.params.id),
+    body: req.body.body,
+  })
+  .then(() => {
+    res.status(200)
+      .json({
+        status: 'success',
+        message: 'Updated a POST!'
+      })
+  })
+  .catch(err => next(err))
+}
 
-// const updatePost = (req, res, next) => {
-//   db.none('UPDATE posts SET poster_id=${poster_id}, body=${body} WHERE id=${id}',{
-//     poster_id: req.body.poster_id,
-//     body: req.body.body,
-//     id: parseInt(req.params.id)
-//   })
-//   .then(() => {
-//     res.status(200)
-//       .json({
-//         status: 'success',
-//         message: 'Updated a POST!'
-//       })
-//   })
-//   .catch(err => next(err))
-// }
 
 const deletePost = (req,res,next)=>{
   let postId = parseInt(req.params.id);
-  db.result("DELETE FROM posts WHERE id=$1",postId)
+  db.result('DELETE FROM posts WHERE id=$1',postId)
   .then(result => {
     res.status(200)
       .json({
@@ -67,4 +66,4 @@ const deletePost = (req,res,next)=>{
   })
   .catch(err => next(err))
 }
-module.exports = {getAllPosts,getSinglePost,createPost,deletePost}
+module.exports = {getAllPosts,getSinglePost,createPost,deletePost,updatePost}
