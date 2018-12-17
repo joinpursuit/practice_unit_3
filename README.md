@@ -16,12 +16,12 @@ Create a full RESTful API using the Facebook database structure you created in t
 - **Likes**
   - GET `/likes` - Get all likes.
   - GET `/likes/posts/:id` - Get all likes for a single post.
-  - POST `/likes` - Add single like.
+  - POST `/likes/posts/:id` - Add single like.
   - DELETE `/likes/:id` - Delete single like.
 - **Comments**
   - GET `/comments` - Get all comments.
   - GET `/comments/posts/:id` - Get all comments for a single post.
-  - POST `/comments` - Add single comment.
+  - POST `/comments/posts/:id` - Add single comment.
   - PATCH `/comments/:id` - Edit single comment.
   - DELETE `/comments/:id` - Delete single comment.
 - **Albums**
@@ -30,7 +30,7 @@ Create a full RESTful API using the Facebook database structure you created in t
 - **Pictures**
   - GET `/pictures` - Get all pictures.
   - GET `/pictures/albums/:id` - Get all pictures for a single album.
-  - POST `/pictures` - Add single picture.
+  - POST `/pictures/albums/:id` - Add single picture.
   - DELETE `/pictures/:id` - Delete single picture.
 
 The responses from your Express app should have three keys: `status`, `message`, and `body`. For example, when I send a GET request for a single user, I should get back something that looks like this:
