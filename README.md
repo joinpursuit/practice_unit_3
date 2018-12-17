@@ -29,17 +29,17 @@ post_id -->
   <!-- - GET `/likes/posts/:id` - Get all likes for a single post. -->
   <!-- - POST `/likes` - Add single like. -->
   <!-- - DELETE `/likes/:id` - Delete single like. -->
-- **Comments**
+<!-- - **Comments**
 id
 commenter_id
 post_id
-body
+body -->
 
-  - GET `/comments` - Get all comments.
-  - GET `/comments/posts/:id` - Get all comments for a single post.
-  - POST `/comments` - Add single comment.
-  - PATCH `/comments/:id` - Edit single comment.
-  - DELETE `/comments/:id` - Delete single comment.
+  <!-- - GET `/comments` - Get all comments. -->
+  <!-- - GET `/comments/posts/:id` - Get all comments for a single post. -->
+  <!-- - POST `/comments` - Add single comment. -->
+  <!-- - PATCH `/comments/:id` - Edit single comment. -->
+  <!-- - DELETE `/comments/:id` - Delete single comment. -->
 - **Albums**
 id
 user_id
