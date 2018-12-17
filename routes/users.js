@@ -1,7 +1,20 @@
 const express = require('express')
 const router = express.Router();
+const {
+  getAllUsers,
+  getSingleUser,
+  addAUser
 
-router.get('/', (req,res,next) => res.send("THIS IS USER ON USER ROUTE"))
+} = require('../query/users.js')
+
+
+router.get('/', getAllUsers)
+router.get('/:id',getSingleUser)
+router.post('/',addAUser)
+
+router.post('id')
+
+
 
 
 

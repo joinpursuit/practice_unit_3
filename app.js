@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express ();
-// const bodyParser = require('body-parser');
-
+const bodyParser = require('body-parser');
 const users = require('./routes/users.js')
 const pictures = require('./routes/pictures.js')
 const posts = require('./routes/posts.js')
@@ -9,8 +8,11 @@ const albums = require('./routes/albums.js')
 const likes = require('./routes/likes.js')
 const comments = require('./routes/comments.js')
 
-// app.use(bodyParser.urlencoded({extend: false }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+app.use(bodyParser.json());
+
 
 port = 1337;
 
