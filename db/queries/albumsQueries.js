@@ -5,7 +5,7 @@ const getAllAlbums = (req, res, next) => {
     .then((data) => {
       res.status(200).json({
         status: 'success',
-        data: data, 
+        body: data,
         message: 'here are all albums of users'
       })
     })
@@ -14,4 +14,17 @@ const getAllAlbums = (req, res, next) => {
     })
 }
 
-module.exports = { getAllAlbums }
+const addAlbum = (req, res, next) => {
+  db.none('INSERT INTO albums(users_id) VALUES(${users_id})', req.body)
+    .then(() => {
+      res.status(200).json({
+        status: 'success',
+        message: 'you have added an album'
+      })
+    })
+    .catch(err => {
+      return next(err)
+    })
+}
+
+module.exports = { getAllAlbums, addAlbum }

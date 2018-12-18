@@ -5,7 +5,7 @@ const getAllPictures = (req, res, next) => {
     .then((data) => {
       res.status(200).json({
         status: 'success',
-        data: data,
+        body: data,
         message: 'You have received all pictures!'
       })
     })
@@ -20,7 +20,7 @@ const getSinglePicture = (req, res, next) => {
     .then((data) => {
       res.status(200).json({
         status: 'success',
-        data: data,
+        body: data,
         message: 'you have a single picture!'
       })
     })

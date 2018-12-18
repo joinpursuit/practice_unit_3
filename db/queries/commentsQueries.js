@@ -5,7 +5,7 @@ const getAllComments = (req, res, next) => {
     .then((data) => {
       res.status(200).json({
         status: 'success',
-        data: data,
+        body: data,
         message: 'you got all comments!'
       })
     })
@@ -20,7 +20,7 @@ const getCommentsOfSinglePost = (req, res, next) => {
     .then((data) => {
       res.status(200).json({
         status: 'success',
-        data: data,
+        body: data,
         message: 'you got a single post!'
       })
     })

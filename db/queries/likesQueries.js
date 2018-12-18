@@ -5,7 +5,7 @@ const getAllLikes = (req, res, next) => {
     .then((data) => {
       res.status(200).json({
         status: 'success',
-        data: data,
+        body: data,
         message: 'you have all likes!'
       })
     })
@@ -20,7 +20,7 @@ const getLikeForSinglePost = (req, res, next) => {
     .then((data) => {
       res.status(200).json({
         status: 'success',
-        data: data,
+        body: data,
         message: 'you have all likes for this single post'
       })
     })

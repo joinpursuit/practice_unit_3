@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const { getAllAlbums } = require('../db/queries/albumsQueries.js')
+const { getAllAlbums, addAlbum } = require('../db/queries/albumsQueries.js')
 
 router.get('/', getAllAlbums)
+router.post('/', addAlbum)
 
 module.exports = router

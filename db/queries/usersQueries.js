@@ -5,7 +5,7 @@ const getAllUsers = (req, res, next) => {
   .then((data) => {
     res.status(200).json({
       status: 'success',
-      data: data,
+      body: data,
       message: 'You have ALL USERS!'
     })
   })
@@ -20,7 +20,7 @@ const getSingleUser = (req, res, next) => {
     .then((data) => {
       res.status(200).json({
         status: 'success',
-        data: data,
+        body: data,
         message: 'You have received One User!'
       })
     })
@@ -45,7 +45,7 @@ const deleteUser = (req, res, next) => {
 }
 
 const createUser = (req, res, next) => {
-  db.none('INSERT INTO users(username, email, body) VALUES(${username}, ${email}, ${body})', req.body)
+  db.none('INSERT INTO users(username, age) VALUES(${username}, ${age})', req.body)
     .then(() => {
       res.status(200).json({
         status: 'success',

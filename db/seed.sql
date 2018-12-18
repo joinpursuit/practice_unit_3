@@ -31,8 +31,8 @@ CREATE TABLE likes (
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   commenters_id INT REFERENCES users(id) ON DELETE CASCADE,
-  body VARCHAR NOT NULL,
-  posts_id INT REFERENCES users(id) ON DELETE CASCADE
+  posts_id INT REFERENCES users(id) ON DELETE CASCADE,
+  body VARCHAR NOT NULL
 );
 
 CREATE TABLE albums (

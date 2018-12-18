@@ -5,7 +5,7 @@ const getAllPosts = (req, res, next) => {
     .then((data) => {
       res.status(200).json({
         status: 'success',
-        data: data,
+        body: data,
         message: 'You have recieved all posts!'
       })
     })
@@ -20,7 +20,7 @@ const getSinglePost = (req, res, next) => {
     .then((data) => {
       res.status(200).json({
         status: 'success',
-        data: data,
+        body: data,
         message: 'You have a single post!'
       })
     })
