@@ -37,13 +37,23 @@ const addAUser = (req, res) => {
   })
 }
 
+function popAUser (req,res,next){
+  let usersId = req.params.id
+  db.none('DELETE FROM users WHERE id=$1',[usersId]).then(()=> res.status(200).json({
+    status: 200,
+    message: "Poped that user"
+  })).catch(err => {
+    return next(err)
+  })
+}
 
 
 
 module.exports = {
   getAllUsers,
   getSingleUser,
-  addAUser
+  addAUser,
+  popAUser
 }
 
 
