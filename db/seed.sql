@@ -24,7 +24,7 @@ CREATE TABLE posts (
 
 CREATE TABLE likes (
   id SERIAL PRIMARY KEY,
-  likes_id INT REFERENCES users(id) ON DELETE CASCADE,
+  likers_id INT REFERENCES users(id) ON DELETE CASCADE,
   posts_id INT REFERENCES users(id) ON DELETE CASCADE
 );
 
@@ -61,7 +61,7 @@ VALUES
   (5, 'A/B testing hypotheses ecosystem entrepreneur conversion interaction design. Seed money funding pitch.'),
   (7, 'Disruptive value proposition metrics.');
 
-INSERT INTO likes(likes_id, posts_id)
+INSERT INTO likes(likers_id, posts_id)
 VALUES (6, 1), (1, 2), (7, 3), (2, 4), (9, 5), (10, 6), (4, 7), (3, 8), (5, 10), (8, 9);
 
 INSERT INTO comments(commenters_id, posts_id, body)

@@ -4,7 +4,8 @@
   "description": "Create a full RESTful API using the Facebook database structure you created in the previous assignment, including an Express app and a Postgres database. This app should have the following routes, with corresponding SQL statements:",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "nodemon app.js" 
   },
   "repository": {
     "type": "git",

@@ -57,8 +57,20 @@ const createPosts = (req, res, next) => {
     })
 }
 
-// const editPosts = (req, res, next) => {
-//   db.
-// }
+const editPosts = (req, res, next) => {
+  db.none('UPDATE posts SET body=${body} WHERE id=${id}', {
+    body: req.body.body,
+    id: parseInt(req.params.id)
+  })
+    .then(() => {
+      res.status(200).json({
+        status: 'success',
+        message: 'you have updated the post'
+      })
+    })
+    .catch(err => {
+      return next(err)
+    })
+}
 
-module.exports = { getAllPosts, getSinglePost, deletePosts, createPosts }
+module.exports = { getAllPosts, getSinglePost, deletePosts, createPosts, editPosts }

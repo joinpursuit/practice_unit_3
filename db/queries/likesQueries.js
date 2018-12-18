@@ -16,7 +16,7 @@ const getAllLikes = (req, res, next) => {
 
 const getLikeForSinglePost = (req, res, next) => {
   let likesId = parseInt(req.params.id)
-  db.one('SELECT * FROM likes JOIN users ON users.id = likes.likes_id WHERE likes.id=$1', likesId)
+  db.one('SELECT * FROM likes JOIN users ON users.id = likes.likers_id WHERE likes.id=$1', likesId)
     .then((data) => {
       res.status(200).json({
         status: 'success',
@@ -28,4 +28,34 @@ const getLikeForSinglePost = (req, res, next) => {
       return next(err)
     })
 }
-module.exports = { getAllLikes, getLikeForSinglePost }
+
+const addLike = (req, res, next) => {
+  db.none('INSERT INTO likes(likers_id, posts_id) VALUES (${likers_id}, ${posts_id})', req.body)
+  .then(() => {
+    res.status(200).json({
+      status: 'success',
+      message: 'you have added a like'
+    })
+  })
+  .catch(err => {
+    return next(err)
+  })
+}
+
+const deleteLike = (req, res, next) => {
+  let likesId = parseInt(req.params.id)
+  db.result('DELETE FROM likes WHERE id=$1', likesId)
+    .then(result => {
+      res.status(200).json({
+        status: 'success',
+        result: result,
+        message: 'you have deleted a like!'
+      })
+    })
+    .catch(err => {
+      return next(err)
+    })
+}
+
+
+module.exports = { getAllLikes, getLikeForSinglePost, addLike, deleteLike }
