@@ -44,17 +44,17 @@ body -->
 id
 user_id
 
-  - GET `/albums` - Get all albums.
-  - POST `/albums` - Add new album.
+  <!-- - GET `/albums` - Get all albums. -->
+  <!-- - POST `/albums` - Add new album. -->
 - **Pictures**
 id
 album_id
 url
 
-  - GET `/pictures` - Get all pictures.
-  - GET `/pictures/albums/:id` - Get all pictures for a single album.
-  - POST `/pictures` - Add single picture.
-  - DELETE `/pictures/:id` - Delete single picture.
+  <!-- - GET `/pictures` - Get all pictures. -->
+  <!-- - GET `/pictures/albums/:id` - Get all pictures for a single album. -->
+  <!-- - POST `/pictures` - Add single picture. -->
+  <!-- - DELETE `/pictures/:id` - Delete single picture. -->
 
 The responses from your Express app should have three keys: `status`, `message`, and `body`. For example, when I send a GET request for a single user, I should get back something that looks like this:
 
