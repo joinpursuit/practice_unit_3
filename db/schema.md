@@ -1,4 +1,8 @@
 users
-id,
-username
-email
+  id,
+  username
+  age
+
+posts
+  id
+  

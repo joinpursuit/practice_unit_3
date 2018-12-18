@@ -45,7 +45,7 @@ const deleteUser = (req, res, next) => {
 }
 
 const createUser = (req, res, next) => {
-  db.none('INSERT INTO users(username, email) VALUES(${username}, ${email})', req.body)
+  db.none('INSERT INTO users(username, email, body) VALUES(${username}, ${email}, ${body})', req.body)
     .then(() => {
       res.status(200).json({
         status: 'success',
