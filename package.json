@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Nielene/practice_unit_3#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "pg-promise": "^8.5.4"
   }
 }
