@@ -32,9 +32,13 @@ const getAllCommentsForSinglePost = (req, res, next) => {
   })
 }
 
-const addSingleComment = (req, res, next) => {
+const addCommentForSinglePost = (req, res, next) => {
   db.none(
-    "INSERT INTO comments (user_id, post_id, body) VALUES (${userId}, ${postId}, ${newBody})", req.body)
+    "INSERT INTO comments (user_id, post_id, body) VALUES (${userId}, ${postId}, ${newBody})", {
+      userId: req.body.user_id,
+      postId: req.body.post_id,
+      newBody: req.body.body
+    })
     .then (() => {
     res.status(200)
     .json({
@@ -46,9 +50,9 @@ const addSingleComment = (req, res, next) => {
     next();
   })
 }
-// userId 3
-// postId 3
-// newBody Yeah! This was so great! LOVE IT!
+// user_d 3
+// post_id 3
+// body Yeah! This was so great! LOVE IT!
 
 
 const editSingleComment = (req, res, next) => {
@@ -92,4 +96,4 @@ const deleteSingleComment = (req, res, next) => {
 
 
 
-module.exports = { getAllComments, getAllCommentsForSinglePost, addSingleComment, editSingleComment, deleteSingleComment };
+module.exports = { getAllComments, getAllCommentsForSinglePost, addCommentForSinglePost, editSingleComment, deleteSingleComment };
