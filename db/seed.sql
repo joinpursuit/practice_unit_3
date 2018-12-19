@@ -35,17 +35,19 @@ CREATE TABLE comments (
   body VARCHAR NOT NULL
 );
 
-CREATE TABLE pictures (
-  id SERIAL PRIMARY KEY,
-  user_id INT REFERENCES users(id) ON DELETE CASCADE,
-  url TEXT NOT NULL
-);
-
 CREATE TABLE albums (
   id SERIAL PRIMARY KEY,
   user_id INT REFERENCES users(id) ON DELETE CASCADE,
   title VARCHAR NOT NULL
 );
+
+CREATE TABLE pictures (
+  id SERIAL PRIMARY KEY,
+  user_id INT REFERENCES users(id) ON DELETE CASCADE,
+  album_id INT REFERENCES albums(id) ON DELETE CASCADE,
+  url TEXT NOT NULL
+);
+
 
 
 INSERT INTO users(name, age) VALUES ('Lisa',45),('Gabriel',53),('Mary',29);
@@ -61,4 +63,4 @@ INSERT INTO comments(user_id, post_id, body) VALUES (1,1, 'i like this post'), (
 
 INSERT INTO albums(user_id, title) VALUES (1,'cats warm'),(2, 'lovely cats'),(3,'stretching cats');
 
-INSERT INTO pictures(user_id, url) VALUES (1,      'https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),(2,      'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),(3,      'https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+INSERT INTO pictures(user_id, album_id, url) VALUES (1, 1,     'https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),(2, 2,     'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),(3, 3,     'https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');

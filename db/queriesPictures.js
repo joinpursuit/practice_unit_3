@@ -1,13 +1,13 @@
 const pgp = require('pg-promise')({});
 const db = pgp('postgres://localhost:5432/facebook');
 
-const getAllLikes = (req, res, next) => {
-  db.any('SELECT * FROM likes').then(likes => {
+const getAllPictures = (req, res, next) => {
+  db.any('SELECT * FROM pictures').then(pictures => {
     res.status(200)
     .json({
       status: 'success',
-      message: 'got ALL likes',
-      body: likes
+      message: 'got ALL pictures',
+      body: pictures
     })
   }).catch((err) => {
     console.log(err);
@@ -15,15 +15,15 @@ const getAllLikes = (req, res, next) => {
   })
 }
 
-const getAllLikesForSinglePost = (req, res, next) => {
-  let postId = parseInt(req.params.id);
-  db.any('SELECT * FROM likes JOIN posts ON likes.user_id=posts.user_id WHERE likes.post_id=$1;', [postId])
+const getAllPicturesForSingleAlbum = (req, res, next) => {
+  let albumId = parseInt(req.params.id);
+  db.any('SELECT * FROM pictures JOIN albums ON pictures.user_id=albums.user_id WHERE pictures.album_id=$1;', [albumId])
   .then(data => {
     res.status(200)
     .json({
       status: 'success',
-      message: 'got ALL LIKES for this post.',
-      body: data //this result data IS the likes belonging to a post.
+      message: 'got ALL PICTURES for this ALBUM.',
+      body: data
     })
   }).catch(err => {
     console.log(err);
@@ -31,32 +31,37 @@ const getAllLikesForSinglePost = (req, res, next) => {
   })
 }
 
-const addSingleLike = (req, res, next) => {
+const addSinglePicture = (req, res, next) => {
   db.none(
-    "INSERT INTO likes(user_id, post_id) VALUES (${userId}, ${postId})", {
+    "INSERT INTO pictures(user_id, album_id, url) VALUES (${userId}, ${albumId}, ${newUrl})", {
       userId: req.body.user_id,
-      postId: req.body.post_id
+      albumId: req.body.album_id,
+      newUrl: req.body.url
     }
   ).then (() => {
     res.status(200)
     .json({
       status: 'success',
-      message: 'Posted new Like.',
+      message: 'Posted new Picture.',
     })
   }).catch((err) => {
     console.log(err);
     next();
   })
-} // working - but psequel vlues = NULL ?!?!
+}
+// user_id: 3
+// album_id: 1
+// url:  https://images.pexels.com/photos/257532/pexels-photo-257532.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
 
-const deleteSingleLike = (req, res, next) => {
-  let likeId = parseInt(req.params.id);
-  db.result('DELETE FROM likes WHERE likes.id=$1', [likeId])
+
+const deleteThisPicture = (req, res, next) => {
+  let pictureId = parseInt(req.params.id);
+  db.result('DELETE FROM pictures WHERE pictures.id=$1', [pictureId])
   .then(result => {
     res.status(200)
     .json({
       status: 'success',
-      message: `You have removed a LIKE.`,
+      message: `You have removed a PICTURE.`,
       result: result
     })
   }).catch(err => {
@@ -67,4 +72,4 @@ const deleteSingleLike = (req, res, next) => {
 
 
 
-module.exports = { getAllLikes, getAllLikesForSinglePost, addSingleLike, deleteSingleLike };
+module.exports = { getAllPictures, getAllPicturesForSingleAlbum, addSinglePicture, deleteThisPicture };
