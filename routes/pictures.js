@@ -4,7 +4,9 @@ const db = require('../db/queriesPictures');
 
 router.get('/', db.getAllPictures);
 router.get('/albums/:id', db.getAllPicturesForSingleAlbum);
-router.post('/', db.addSinglePicture);
+//
+router.post('/albums/:id', db.addPictureForSingleAlbum);
+//
 router.delete('/:id', db.deleteThisPicture);
 
 

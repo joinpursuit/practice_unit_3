@@ -19,6 +19,10 @@ app.use('/comments', comments);
 app.use('/albums', albums);
 app.use('/pictures', pictures);
 
+app.get('/', (req, res) => {
+  res.send('This is the  HOMEPAGE!')
+})
+
 app.get('*', (req, res) => {
   res.send('error');
 })

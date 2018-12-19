@@ -1,5 +1,6 @@
-const pgp = require('pg-promise')({});
-const db = pgp('postgres://localhost:5432/facebook');
+// const pgp = require('pg-promise')({});
+// const db = pgp('postgres://localhost:5432/facebook');
+const { db } = require('./index.js')
 
 const getAllComments = (req, res, next) => {
   db.any('SELECT * FROM comments').then(comments => {
@@ -36,7 +37,7 @@ const addCommentForSinglePost = (req, res, next) => {
   db.none(
     "INSERT INTO comments (user_id, post_id, body) VALUES (${userId}, ${postId}, ${newBody})", {
       userId: req.body.user_id,
-      postId: req.body.post_id,
+      postId: req.params.id,
       newBody: req.body.body
     })
     .then (() => {

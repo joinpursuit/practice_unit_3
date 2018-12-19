@@ -1,5 +1,6 @@
-const pgp = require('pg-promise')({});
-const db = pgp('postgres://localhost:5432/facebook');
+// const pgp = require('pg-promise')({});
+// const db = pgp('postgres://localhost:5432/facebook');
+const { db } = require('./index.js')
 
 const getAllAlbums = (req, res, next) => {
   db.any('SELECT * FROM albums')

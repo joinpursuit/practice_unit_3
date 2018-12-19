@@ -1,5 +1,6 @@
-const pgp = require('pg-promise')({});
-const db = pgp('postgres://localhost:5432/facebook');
+// const pgp = require('pg-promise')({});
+// const db = pgp('postgres://localhost:5432/facebook');
+const { db } = require('./index.js')
 
 const getAllLikes = (req, res, next) => {
   db.any('SELECT * FROM likes').then(likes => {
@@ -30,12 +31,12 @@ const getAllLikesForSinglePost = (req, res, next) => {
     next();
   })
 }
-
-const addSingleLike = (req, res, next) => {
+// POST: /likes/posts/:id
+const addLikeForSinglePost = (req, res, next) => {
   db.none(
     "INSERT INTO likes(user_id, post_id) VALUES (${userId}, ${postId})", {
       userId: req.body.user_id,
-      postId: req.body.post_id
+      postId: req.params.id
     }
   ).then (() => {
     res.status(200)
@@ -67,4 +68,4 @@ const deleteSingleLike = (req, res, next) => {
 
 
 
-module.exports = { getAllLikes, getAllLikesForSinglePost, addSingleLike, deleteSingleLike };
+module.exports = { getAllLikes, getAllLikesForSinglePost, addLikeForSinglePost, deleteSingleLike };

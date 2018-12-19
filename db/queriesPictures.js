@@ -1,5 +1,6 @@
-const pgp = require('pg-promise')({});
-const db = pgp('postgres://localhost:5432/facebook');
+// const pgp = require('pg-promise')({});
+// const db = pgp('postgres://localhost:5432/facebook');
+const { db } = require('./index.js')
 
 const getAllPictures = (req, res, next) => {
   db.any('SELECT * FROM pictures').then(pictures => {
@@ -31,11 +32,13 @@ const getAllPicturesForSingleAlbum = (req, res, next) => {
   })
 }
 
-const addSinglePicture = (req, res, next) => {
+const addPictureForSingleAlbum = (req, res, next) => {
   db.none(
+    // "INSERT INTO pictures (album_id, url) VALUES ( ${albumId}, ${newUrl})", {
+
     "INSERT INTO pictures(user_id, album_id, url) VALUES (${userId}, ${albumId}, ${newUrl})", {
       userId: req.body.user_id,
-      albumId: req.body.album_id,
+      albumId: req.params.id,
       newUrl: req.body.url
     }
   ).then (() => {
@@ -72,4 +75,4 @@ const deleteThisPicture = (req, res, next) => {
 
 
 
-module.exports = { getAllPictures, getAllPicturesForSingleAlbum, addSinglePicture, deleteThisPicture };
+module.exports = { getAllPictures, getAllPicturesForSingleAlbum, addPictureForSingleAlbum, deleteThisPicture };

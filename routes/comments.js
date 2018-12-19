@@ -9,6 +9,4 @@ router.patch('/:id', db.editSingleComment)
 router.delete('/:id', db.deleteSingleComment);
 
 
-
-
 module.exports = router;
