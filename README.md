@@ -6,7 +6,7 @@ Create a full RESTful API using the Facebook database structure you created in t
   - GET `/users` - Get all users.
   - GET `/users/:id` - Get single user.
   - POST `/users` - Add single user.
-  - DELETE `/users/:id` - Delete user with the corresponding `id`.
+  - DELETE `/users/:id` - Delete user with the correspbnonding `id`.
 - **Posts**
   - GET `/posts` - Get all posts.
   - GET `/posts/:id` - Get single post.
