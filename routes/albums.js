@@ -1,6 +1,11 @@
 const express = require('express')
 const router = express.Router();
+const {getAllAlbums,
+addAlbum
+} = require('../query/albumsQ.js')
 
-router.get('/', (req, res, next) => res.send("THIS IS albums ON albums ROUTE"))
+
+router.get('/', getAllAlbums)
+router.post('/', addAlbum)
 
 module.exports = router

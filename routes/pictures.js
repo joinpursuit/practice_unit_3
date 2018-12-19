@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
+const {getAllCommments} = require('../query/commentsQ.js')
 
-router.get('/', (req, res, next) => res.send("THIS IS PICTURE ON PICTURE ROUTE"))
+router.get('/',getAllCommments)
 
 module.exports = router
