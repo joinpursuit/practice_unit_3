@@ -17,25 +17,25 @@ CREATE TABLE posts (
 
 CREATE TABLE likes (
   id SERIAL PRIMARY KEY,
-  liker_id INT REFERENCES users(id),
+  liker_id INT REFERENCES users(id) ON DELETE CASCADE,
   post_id INT REFERENCES posts(id)
 );
 
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
-  commenter_id INT REFERENCES users(id),
+  commenter_id INT REFERENCES users(id) ON DELETE CASCADE,
   post_id INT REFERENCES posts(id),
   body VARCHAR NOT NULL
 );
 
 CREATE TABLE albums (
   id SERIAL PRIMARY KEY,
-  user_id INT REFERENCES users(id)
+  user_id INT REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE Table Pictures (
   id SERIAL PRIMARY KEY,
-  album_id INT REFERENCES albums(id),
+  album_id INT REFERENCES albums(id) ON DELETE CASCADE,
   url VARCHAR NOT NULL
 );
 

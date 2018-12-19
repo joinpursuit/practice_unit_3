@@ -7,7 +7,7 @@ router.get('/', allComments);
 
 router.get('/posts/:id', postComments);
 
-router.post('/:id', addComment);
+router.post('/', addComment);
 
 router.patch('/:id', updateComment);
 
