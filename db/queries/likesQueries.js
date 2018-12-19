@@ -16,7 +16,7 @@ const getAllLikes = (req, res, next) => {
 
 const getLikeForSinglePost = (req, res, next) => {
   let likesId = parseInt(req.params.id)
-  db.one('SELECT * FROM likes JOIN users ON users.id = likes.likers_id WHERE likes.id=$1', likesId)
+  db.any('SELECT SUM(likers_id) FROM likes WHERE posts_id=$1', likesId)
     .then((data) => {
       res.status(200).json({
         status: 'success',
@@ -30,7 +30,10 @@ const getLikeForSinglePost = (req, res, next) => {
 }
 
 const addLike = (req, res, next) => {
-  db.none('INSERT INTO likes(likers_id, posts_id) VALUES (${likers_id}, ${posts_id})', req.body)
+  db.none('INSERT INTO likes(likers_id) VALUES (${likers_id})' , {
+    likers_id: req.body.likers_id,
+    posts_id: parseInt(req.body.likesId)
+  })
   .then(() => {
     res.status(200).json({
       status: 'success',

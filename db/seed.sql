@@ -18,14 +18,14 @@ CREATE TABLE users (
 
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
-  posts_id INT REFERENCES users(id) ON DELETE CASCADE,
+  posters_id INT REFERENCES users(id) ON DELETE CASCADE,
   body TEXT NOT NULL
 );
 
 CREATE TABLE likes (
   id SERIAL PRIMARY KEY,
   likers_id INT REFERENCES users(id) ON DELETE CASCADE,
-  posts_id INT REFERENCES users(id) ON DELETE CASCADE
+  posts_id INT REFERENCES posts(id) ON DELETE CASCADE
 );
 
 CREATE TABLE comments (
@@ -49,7 +49,7 @@ CREATE TABLE pictures (
 INSERT INTO users(username, age)
 VALUES ('Gregory Samsa', 54), ('Bobbie Tillman', 23), ('Tabitha Ealhstan', 34), ('Kamal Ante', 46), ('Keenan Kristian', 19), ('Lynne Meztli', 44), ('Amrita Gabriela', 62), ('Daniel Elke', 78), ('Roberta Alba', 27), ('Julia Layla', 55);
 
-INSERT INTO posts(posts_id, body)
+INSERT INTO posts(posters_id, body)
 VALUES
   (6, 'Creative learning curve business plan. Conversion bandwidth partner network traction deployment focus leverage. Monetization social proof marketing scrum project investor innovator stock.'),
   (2, 'Growth hacking twitter iPad assets beta holy grail prototype. Monetization accelerator supply chain social media prototype angel investor responsive web design focus investor churn rate business model canvas mass market android infrastructure.'),

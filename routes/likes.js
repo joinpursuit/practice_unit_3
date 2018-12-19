@@ -4,7 +4,7 @@ const { getAllLikes, getLikeForSinglePost, addLike, deleteLike } = require('../d
 
 router.get('/', getAllLikes)
 router.get('/posts/:id', getLikeForSinglePost)
-router.post('/', addLike)
+router.post('/posts/:id', addLike)
 router.delete('/:id', deleteLike)
 
 module.exports = router
