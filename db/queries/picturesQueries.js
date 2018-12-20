@@ -14,14 +14,14 @@ const getAllPictures = (req, res, next) => {
     })
 }
 
-const getSinglePicture = (req, res, next) => {
-  let pictureId = parseInt(req.params.id)
-  db.one('SELECT * FROM pictures WHERE id=$1', pictureId)
+const getPictureFromAlbum = (req, res, next) => {
+  let albumId = parseInt(req.params.id)
+  db.any('SELECT photo_url FROM pictures JOIN albums ON (albums_id = albums.users_id) WHERE albums_id = $1', albumId)
     .then((data) => {
       res.status(200).json({
         status: 'success',
         body: data,
-        message: 'you have a single picture!'
+        message: 'you have all pictures from this album!'
       })
     })
     .catch(err => {
@@ -30,7 +30,10 @@ const getSinglePicture = (req, res, next) => {
 }
 
 const addPicture = (req, res, next) => {
-  db.none('INSERT INTO pictures(pictures_id, photo_url) VALUES(${pictures_id}, ${photo_url})', req.body)
+  db.none('INSERT INTO pictures(albums_id, photo_url) VALUES(${albums_id}, ${photo_url})', {
+    albums_id: req.body.albums_id,
+    photo_url: req.body.photo_url
+  })
     .then(() => {
       res.status(200).json({
         status: 'success',
@@ -57,4 +60,4 @@ const deletePicture = (req, res, next) => {
     })
 }
 
-module.exports = { getAllPictures, getSinglePicture, addPicture, deletePicture }
+module.exports = { getAllPictures, getPictureFromAlbum, addPicture, deletePicture }

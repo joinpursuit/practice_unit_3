@@ -37,13 +37,13 @@ CREATE TABLE comments (
 
 CREATE TABLE albums (
   id SERIAL PRIMARY KEY,
-  users_id  INT REFERENCES users(id) ON DELETE CASCADE
+  users_id INT REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE pictures (
   id SERIAL PRIMARY KEY,
-  pictures_id INT REFERENCES users(id) ON DELETE CASCADE,
-  photo_url TEXT NOT NULL
+  albums_id INT REFERENCES albums(id) ON DELETE CASCADE,
+  photo_url VARCHAR NOT NULL
 );
 
 INSERT INTO users(username, age)
@@ -79,7 +79,7 @@ VALUES (2, 1, 'Your post looks amazing '),
 INSERT INTO albums(users_id)
 VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10);
 --
-INSERT INTO pictures(pictures_id, photo_url)
+INSERT INTO pictures(albums_id, photo_url)
 VALUES
 (6, 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
 (2, 'https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
@@ -87,4 +87,4 @@ VALUES
 (8, 'https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
 (3, 'https://images.pexels.com/photos/62321/kitten-cat-fluffy-cat-cute-62321.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
 (1, 'https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
-(9, 'https://images.pexels.com/photos/257532/pexels-photo-257532.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'), (10, 'https://images.pexels.com/photos/127027/pexels-photo-127027.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'), (5, 'https://images.pexels.com/photos/979247/pexels-photo-979247.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'), (7, 'https://images.pexels.com/photos/271955/pexels-photo-271955.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+(9, 'https://images.pexels.com/photos/257532/pexels-photo-257532.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'), (10, 'https://images.pexels.com/photos/127027/pexels-photo-127027.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'), (5, 'https://images.pexels.com/photos/979247/pexels-photo-979247.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'), (2, 'https://images.pexels.com/photos/271955/pexels-photo-271955.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');

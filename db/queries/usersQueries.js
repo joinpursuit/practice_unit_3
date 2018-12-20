@@ -15,8 +15,8 @@ const getAllUsers = (req, res, next) => {
 }
 
 const getSingleUser = (req, res, next) => {
-  let usersId = parseInt(req.params.id)
-  db.one('SELECT * FROM users WHERE id=$1', usersId)
+  let usersId = parseInt(req.params.id) //could also use Number()
+  db.one('SELECT * FROM users WHERE id=$1',  usersId) //could also use id = ${id} and then { id: usersId}
     .then((data) => {
       res.status(200).json({
         status: 'success',
@@ -31,12 +31,11 @@ const getSingleUser = (req, res, next) => {
 
 const deleteUser = (req, res, next) => {
   let usersId = parseInt(req.params.id)
-  db.result('DELETE FROM users WHERE id=$1', usersId)
-    .then(result => {
+  db.none('DELETE FROM users WHERE id=$1', usersId)
+    .then(() => {
       res.status(200).json({
         status: 'success',
         message: 'You have deleted a user!',
-        result: result
       })
     })
     .catch(err => {
@@ -45,6 +44,8 @@ const deleteUser = (req, res, next) => {
 }
 
 const createUser = (req, res, next) => {
+  // const user = req.body;
+  // user.age = Number(user.age)
   db.none('INSERT INTO users(username, age) VALUES(${username}, ${age})', req.body)
     .then(() => {
       res.status(200).json({

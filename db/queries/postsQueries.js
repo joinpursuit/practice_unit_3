@@ -58,7 +58,8 @@ const createPosts = (req, res, next) => {
 }
 
 const editPosts = (req, res, next) => {
-  db.none('UPDATE posts SET body=${body} WHERE id=${id}', {
+  db.none('UPDATE posts SET posters_id=${posters_id}, body=${body} WHERE id=${id}', {
+    posters_id: req.body.posters_id,
     body: req.body.body,
     id: parseInt(req.params.id)
   })
@@ -72,5 +73,20 @@ const editPosts = (req, res, next) => {
       return next(err)
     })
 }
+
+// if we wannah update both userId and the body
+// const postId = Number(req.params.id)
+// let queryString = 'UPDATE posts SET ';
+// if(req.body.user_id) {
+//   queryString += `user_id = ${req.body.user_id}, body = '${req.body.body}'`;
+// } else if (req.body.user_id) {
+//   queryString += `user_id = ${req.params.user_id}`
+// } else {
+//   queryString += `body = '${req.body.body}'`
+// }
+//queryString += `WHERE id = ${postId}`
+//console.log(queryString);
+//db.none(queryString)
+
 
 module.exports = { getAllPosts, getSinglePost, deletePosts, createPosts, editPosts }

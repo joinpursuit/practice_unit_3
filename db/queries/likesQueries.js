@@ -16,7 +16,7 @@ const getAllLikes = (req, res, next) => {
 
 const getLikeForSinglePost = (req, res, next) => {
   let likesId = parseInt(req.params.id)
-  db.any('SELECT SUM(likers_id) FROM likes WHERE posts_id=$1', likesId)
+  db.any('SELECT * FROM likes WHERE posts_id=$1', likesId)
     .then((data) => {
       res.status(200).json({
         status: 'success',
